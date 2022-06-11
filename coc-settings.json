@@ -1,0 +1,62 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    },
+    "rescript": {
+      "enable": true,
+      "module": "~/.vim/plugged/vim-rescript/server/out/server.js",
+      "args": ["--node-ipc"],
+      "filetypes": ["rescript"],
+      "rootPatterns": ["bsconfig.json"]
+    },
+    "ocaml": {
+      "command": "ocamllsp",
+      "rootPatterns": ["dune-project"],
+      "filetypes": ["ocaml"],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "rescript",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "css",
+    "markdown",
+    "json"
+  ],
+    
+  "prettier.printWidth": 120,
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "explorer.keyMappings.global": {
+    "e": "open",
+    "s": "open:split",
+    "E": "open:vsplit",
+    "t": "open:tab",
+
+    "yp": "copyFilepath",
+    "yn": "copyFilename",
+    "yy": "copyFile",
+    "dd": "cutFile",
+    "p": "pasteFile",
+    "df": "delete",
+    "dF": "deleteForever",
+
+    "a": "addFile",
+    "A": "addDirectory",
+    "r": "rename",
+
+    "R": "refresh",
+    "f": "search",
+    "F": "searchRecursive",
+  },
+  "explorer.icon.enableNerdfont": true
+}
