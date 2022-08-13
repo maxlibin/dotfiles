@@ -1,11 +1,5 @@
 {
   "languageserver": {
-    "go": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
-      "filetypes": ["go"]
-    },
     "rescript": {
       "enable": true,
       "module": "~/.vim/plugged/vim-rescript/server/out/server.js",
@@ -29,7 +23,9 @@
     "typescriptreact",
     "css",
     "markdown",
-    "json"
+    "json",
+    "ocaml",
+    "rescript"
   ],
     
   "prettier.printWidth": 120,

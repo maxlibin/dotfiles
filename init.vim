@@ -9,35 +9,15 @@ set nocompatible
 filetype plugin on
 
 call plug#begin('~/.vim/plugged')
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'tomlion/vim-solidity'
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-  Plug 'rescript-lang/vim-rescript'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'andymass/vim-matchup'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-surround'
-  Plug 'mattn/emmet-vim'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'maxbrunsfeld/vim-yankstack'
-  Plug 'tpope/vim-fugitive'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'honza/vim-snippets'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'voldikss/vim-floaterm'
-  Plug 'junegunn/fzf.vim'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-
-let g:airline_theme = 'tokyonight'
+" let g:airline_theme = 'tokyonight'
 let g:airline_powerline_fonts = 1 
 
 let g:tokyonight_style = "night"
