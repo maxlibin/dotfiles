@@ -1,18 +1,19 @@
 {
   "languageserver": {
+    "ocaml": {
+       "command": "opam",
+       "args": ["config", "exec", "--", "ocamllsp"],
+      "filetypes": [
+        "reason",
+        "ocaml"
+       ]
+    },
     "rescript": {
       "enable": true,
-      "module": "~/.vim/plugged/vim-rescript/server/out/server.js",
+      "module": "~/.local/share/nvim/site/pack/packer/start/vim-rescript/server/out/server.js",
       "args": ["--node-ipc"],
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
-    },
-    "ocaml": {
-      "command": "ocamllsp",
-      "rootPatterns": ["dune-project"],
-      "filetypes": ["ocaml"],
-      "initializationOptions": {},
-      "settings": {}
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
@@ -27,7 +28,6 @@
     "ocaml",
     "rescript"
   ],
-    
   "prettier.printWidth": 120,
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
@@ -54,5 +54,10 @@
     "f": "search",
     "F": "searchRecursive",
   },
-  "explorer.icon.enableNerdfont": true
+  "explorer.icon.enableNerdfont": true,
+  "explorer.width": 50,
+  "diagnostic.errorSign": "☹",
+  "diagnostic.hintSign": "ℹ",
+  "diagnostic.infoSign": "♨",
+  "diagnostic.checkCurrentLine": true,
 }

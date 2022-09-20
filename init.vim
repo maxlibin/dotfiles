@@ -10,15 +10,11 @@ filetype plugin on
 
 call plug#begin('~/.vim/plugged')
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-" let g:airline_theme = 'tokyonight'
-let g:airline_powerline_fonts = 1 
 
 let g:tokyonight_style = "night"
 "let g:tokyonight_italic_functions = 1
@@ -41,28 +37,21 @@ colorscheme tokyonight
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+" remap for complete to use tab and <cr>
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+hi CocSearch ctermfg=12 guifg=#18A3FF
+hi CocMenuSel ctermbg=109 guibg=#13354A
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -111,7 +100,6 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-
 " ------------------------------------------------------------------------------
 " Other Keys mapping 
 " ------------------------------------------------------------------------------
@@ -128,9 +116,9 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nmap <C-s> :w<CR>
 imap jj <Esc>
 imap kk <Esc>
-nnoremap <silent> <C-z> :FloatermToggle<Enter>                                                                                                                                                                                                                                    
-tnoremap <silent> <C-z> <C-\><C-n>:FloatermToggle<CR>
+" setup mapping to call :LazyGit
 vnoremap <leader>c :OSCYank<CR>
+nnoremap <silent> <leader>gg :LazyGit<CR>
 
 " move among buffers with CTRL
 map <C-J> :bprev<CR>
@@ -150,21 +138,15 @@ augroup END
 " enable autocomplete
 let g:deoplete#enable_at_startup = 1
 
-" -----------------------------------------------------------------------------
-" Set Yank to end the visual block at last line
-" -----------------------------------------------------------------------------
-function! YRRunAfterMaps()
-  vmap y ygv<Esc>
-endfunction
-" -----------------------------------------------------------------------------
-
 " Set floating window border line color to cyan, and background to orange
 " hi FloatermBorder guifg=cyan
 
 autocmd InsertEnter,InsertLeave * set cul!
-hi CursorColumn guibg=#202020
-hi CursorLine guibg=#202020
+hi CursorColumn guibg=#050020
+hi CursorLine guibg=#050020
 
 set t_ZH=^[[3m
 set t_ZR=^[[23m
-set clipboard^=unnamed,unnamedplus
+" set clipboard^=unnamed,unnamedplus
+
+autocmd BufRead,BufNewFile *.atd set filetype=ocaml
