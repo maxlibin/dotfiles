@@ -13,24 +13,27 @@ return require('packer').startup(function()
       require("trouble").setup {}
     end
   }
+  use "github/copilot.vim"
   use "kdheepak/lazygit.nvim"
   use "ahrefs/vim-styled-ppx"
+  use "lukas-reineke/indent-blankline.nvim"
+  use "jwalton512/vim-blade"
+  use 'folke/tokyonight.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use {'neoclide/coc.nvim', branch = 'release'}
   use 'p00f/nvim-ts-rainbow'
   use {
-    'iamcco/markdown-preview.nvim',
-    ft = 'markdown',
-    run = 'cd app && yarn install'
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("live_grep_args")
+    end
   }
-  use "lukas-reineke/indent-blankline.nvim"
-  use "jwalton512/vim-blade"
-  use 'p00f/nvim-ts-rainbow'
-  use 'nkrkv/nvim-treesitter-rescript'
-  use 'rescript-lang/vim-rescript'
-  use 'nvim-telescope/telescope.nvim'
   use 'andymass/vim-matchup'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
@@ -42,7 +45,6 @@ return require('packer').startup(function()
   use 'vim-airline/vim-airline-themes'
   use 'tomlion/vim-solidity'
   use 'honza/vim-snippets'
-  use 'voldikss/vim-floaterm'
   use 'junegunn/fzf.vim'
   use 'sheerun/vim-polyglot'
   use 'terryma/vim-multiple-cursors'
@@ -50,7 +52,8 @@ return require('packer').startup(function()
   use 'reasonml-editor/vim-reason-plus'
   use 'jiangmiao/auto-pairs'
   use "numToStr/FTerm.nvim"
-  use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}
-  use {'folke/tokyonight.nvim', branch = 'main' }
   use 'vijaymarupudi/nvim-fzf'
+  use 'wfxr/minimap.vim'
+  use 'rescript-lang/vim-rescript'
+  use 'nkrkv/nvim-treesitter-rescript'
 end)

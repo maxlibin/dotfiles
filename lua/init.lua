@@ -1,5 +1,3 @@
-vim.syntax=true
-
 local set = vim.opt
 
 set.guifont="Fira Code:h12"
@@ -22,7 +20,7 @@ set.ttyfast=true
 set.colorcolumn="120"
 set.signcolumn="auto"
 set.mouse="c"
-set.cmdheight=3
+set.cmdheight=2
 set.updatetime=300
 set.writebackup=false
 set.hidden=true
@@ -62,5 +60,7 @@ require'FTerm'.setup({
 })
 
 -- Example keybindings
+vim.keymap.set("n", '<C-f>', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set('n', '<C-z>', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<C-z>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+vim.g.copilot_node_command = "~/.nvm/versions/node/v16.13.1/bin/node"

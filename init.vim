@@ -1,34 +1,64 @@
 lua require("init")
 lua require('plugins')
 
-" Start Vim  
-" ------------------------------------------------------------------------------
 set undodir=~/.vim/undordir
 set undofile
-set nocompatible
-filetype plugin on
-
-call plug#begin('~/.vim/plugged')
-  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-let g:tokyonight_style = "night"
-"let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+colorscheme tokyonight-night
 
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
+" Formting ReasonML with bsrefmt
+augroup reasonml
+  autocmd!
+  autocmd FileType reason nmap <silent> == :! yarn bsrefmt --in-place -w 120 %:p <CR> :e! <CR>
+augroup END
 
-" Load the colorscheme
-set background=dark
-colorscheme tokyonight
+" enable autocomplete
+let g:deoplete#enable_at_startup = 1
+"
+" Showing minimap - https://github.com/wfxr/minimap.vim
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+
+autocmd InsertEnter,InsertLeave * set cul!
+hi CursorColumn guibg=#050020
+hi CursorLine guibg=#050020
+
+set t_ZH=^[[3m
+set t_ZR=^[[23m
+" set clipboard^=unnamed,unnamedplus
+
+autocmd BufRead,BufNewFile *.atd set filetype=ocaml
+
+" ------------------------------------------------------------------------------
+" Other Keys mapping 
+" ------------------------------------------------------------------------------
+" nmap <C-b> :Vexplore<CR>
+nnoremap <space>e :CocCommand explorer<CR>
+" nmap <C-g> :GFiles<CR>
+nmap <C-h> :History<CR>
+nmap <C-p> :Files<CR>
+" Find files using Telescope command-line sugar.
+nmap <C-g> :Telescope find_files<CR>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nmap <C-s> :w<CR>
+imap jj <Esc>
+imap kk <Esc>
+" setup mapping to call :LazyGit
+vnoremap <leader>c :OSCYank<CR>
+nnoremap <silent> <leader>gg :LazyGit<CR>
+
+" move among buffers with CTRL
+map <C-J> :bprev<CR>
+map <C-K> :bnext<CR>
+" Shift + J/K moves selected lines down/up in visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 
 " ------------------------------------------------------------------------------
 " Configs for COC plugin
@@ -65,6 +95,11 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" " Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gs :sp<CR><Plug>(coc-definition)
@@ -83,7 +118,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -99,54 +134,3 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" ------------------------------------------------------------------------------
-" Other Keys mapping 
-" ------------------------------------------------------------------------------
-" nmap <C-b> :Vexplore<CR>
-nnoremap <space>e :CocCommand explorer<CR>
-" nmap <C-g> :GFiles<CR>
-nmap <C-h> :History<CR>
-nmap <C-p> :Files<CR>
-" Find files using Telescope command-line sugar.
-nmap <C-g> :Telescope find_files<CR>
-nmap <C-f> :Telescope live_grep<CR>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nmap <C-s> :w<CR>
-imap jj <Esc>
-imap kk <Esc>
-" setup mapping to call :LazyGit
-vnoremap <leader>c :OSCYank<CR>
-nnoremap <silent> <leader>gg :LazyGit<CR>
-
-" move among buffers with CTRL
-map <C-J> :bprev<CR>
-map <C-K> :bnext<CR>
-" Shift + J/K moves selected lines down/up in visual mode
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-"
-" -----------------------------------------------------------------------------
-
-" Formting ReasonML with bsrefmt
-augroup reasonml
-autocmd!
-  autocmd FileType reason nmap <silent> == :! yarn bsrefmt --in-place -w 120 %:p <CR> :e! <CR>
-augroup END
-
-" enable autocomplete
-let g:deoplete#enable_at_startup = 1
-
-" Set floating window border line color to cyan, and background to orange
-" hi FloatermBorder guifg=cyan
-
-autocmd InsertEnter,InsertLeave * set cul!
-hi CursorColumn guibg=#050020
-hi CursorLine guibg=#050020
-
-set t_ZH=^[[3m
-set t_ZR=^[[23m
-" set clipboard^=unnamed,unnamedplus
-
-autocmd BufRead,BufNewFile *.atd set filetype=ocaml
