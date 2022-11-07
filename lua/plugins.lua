@@ -34,16 +34,20 @@ return require('packer').startup(function()
       require("telescope").load_extension("live_grep_args")
     end
   }
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
   use 'andymass/vim-matchup'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'mattn/emmet-vim'
-  use 'airblade/vim-gitgutter'
   use 'maxbrunsfeld/vim-yankstack'
+  use 'airblade/vim-gitgutter'
   use 'tpope/vim-fugitive'
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
-  use 'tomlion/vim-solidity'
   use 'honza/vim-snippets'
   use 'junegunn/fzf.vim'
   use 'sheerun/vim-polyglot'
