@@ -52,10 +52,10 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require'FTerm'.setup({
-    border = 'double',
     dimensions  = {
-        height = 0.8,
-        width = 0.9,
+      height = 0.8,
+      width = 0.9,
+      blend = 80,
     },
 })
 

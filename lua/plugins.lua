@@ -57,7 +57,6 @@ return require('packer').startup(function()
   use 'jiangmiao/auto-pairs'
   use "numToStr/FTerm.nvim"
   use 'vijaymarupudi/nvim-fzf'
-  use 'wfxr/minimap.vim'
   use 'rescript-lang/vim-rescript'
   use 'nkrkv/nvim-treesitter-rescript'
 end)

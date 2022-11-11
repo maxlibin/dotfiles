@@ -27,6 +27,10 @@
   "diagnostic.hintSign": "ℹ",
   "diagnostic.infoSign": "♨",
   "diagnostic.checkCurrentLine": true,
+  "suggest.floatConfig": {
+    "border": true,
+    "rounded": true
+  },
   "suggest.noselect": true,
   "explorer.keyMappings.global": {
     "e": "open",
