@@ -13,7 +13,6 @@ return require('packer').startup(function()
       require("trouble").setup {}
     end
   }
-  use "github/copilot.vim"
   use "kdheepak/lazygit.nvim"
   use "ahrefs/vim-styled-ppx"
   use "lukas-reineke/indent-blankline.nvim"
@@ -34,10 +33,6 @@ return require('packer').startup(function()
       require("telescope").load_extension("live_grep_args")
     end
   }
-  use({
-      "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
-  })
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
   use 'andymass/vim-matchup'
   use 'tpope/vim-repeat'
@@ -49,7 +44,9 @@ return require('packer').startup(function()
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
   use 'honza/vim-snippets'
-  use 'junegunn/fzf.vim'
+  use 'SirVer/ultisnips'
+  use { 'junegunn/fzf', run = ":call fzf#install()" }
+  use { 'junegunn/fzf.vim' }
   use 'sheerun/vim-polyglot'
   use 'terryma/vim-multiple-cursors'
   use 'nvim-lua/plenary.nvim'

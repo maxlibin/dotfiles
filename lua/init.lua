@@ -63,4 +63,3 @@ require'FTerm'.setup({
 vim.keymap.set("n", '<C-f>', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set('n', '<C-z>', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<C-z>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
-vim.g.copilot_node_command = "~/.nvm/versions/node/v16.13.1/bin/node"
