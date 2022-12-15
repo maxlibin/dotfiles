@@ -17,13 +17,9 @@ augroup END
 
 " enable autocomplete
 let g:deoplete#enable_at_startup = 1
-"
-" Showing minimap - https://github.com/wfxr/minimap.vim
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
 
 autocmd InsertEnter,InsertLeave * set cul!
+
 hi CursorColumn guibg=#050020
 hi CursorLine guibg=#050020
 
@@ -36,15 +32,11 @@ autocmd BufRead,BufNewFile *.atd set filetype=ocaml
 " ------------------------------------------------------------------------------
 " Other Keys mapping 
 " ------------------------------------------------------------------------------
-" nmap <C-b> :Vexplore<CR>
 nnoremap <space>e :CocCommand explorer<CR>
 " nmap <C-g> :GFiles<CR>
 nmap <C-h> :History<CR>
 nmap <C-p> :Files<CR>
-" Find files using Telescope command-line sugar.
-nmap <C-g> :Telescope find_files<CR>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"
 nmap <C-s> :w<CR>
 imap jj <Esc>
 imap kk <Esc>

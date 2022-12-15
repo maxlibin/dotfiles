@@ -52,7 +52,9 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'reasonml-editor/vim-reason-plus'
   use 'jiangmiao/auto-pairs'
-  use "numToStr/FTerm.nvim"
+  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end}
   use 'vijaymarupudi/nvim-fzf'
   use 'rescript-lang/vim-rescript'
   use 'nkrkv/nvim-treesitter-rescript'

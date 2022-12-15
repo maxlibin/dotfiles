@@ -51,15 +51,60 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-require'FTerm'.setup({
-    dimensions  = {
-      height = 0.8,
-      width = 0.9,
-      blend = 80,
-    },
+require("tokyonight").setup({
+  on_highlights = function(hl, c)
+    hl.TelescopeNormal = {
+      bg = c.transparent,
+      fg = c.transparent,
+    }
+    hl.TelescopeBorder = {
+      bg = c.transparent,
+      fg = c.transparent,
+    }
+    hl.TelescopePromptNormal = {
+      bg = c.transparent,
+    }
+    hl.TelescopePromptBorder = {
+      bg = c.transparent,
+      fg = c.transparent,
+    }
+    hl.TelescopePromptTitle = {
+      bg = c.transparent,
+      fg = c.transparent,
+    }
+    hl.TelescopePreviewTitle = {
+      bg = c.transparent,
+      fg = c.transparent,
+    }
+    hl.TelescopeResultsTitle = {
+      bg = c.transparent,
+      fg = c.transparent,
+    }
+  end,
 })
 
+require('telescope').setup{
+  defaults = {
+  },
+  pickers = {
+    find_files = {
+      theme = "dropdown",
+    }
+  },
+  extensions = {
+    -- ...
+  }
+}
+
 -- Example keybindings
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<C-g>', builtin.find_files, {})
 vim.keymap.set("n", '<C-f>', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-vim.keymap.set('n', '<C-z>', '<CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('t', '<C-z>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+
+require("toggleterm").setup{
+  open_mapping = [[<c-z>]],
+  float_opts = {
+    border= 'curved'
+  },
+  direction = 'float'
+}
