@@ -87,8 +87,10 @@ require('telescope').setup{
   defaults = {
   },
   pickers = {
-    find_files = {
+    live_grep = {
       theme = "dropdown",
+    },
+    find_files = {
     }
   },
   extensions = {

@@ -13,7 +13,8 @@ return require('packer').startup(function()
       require("trouble").setup {}
     end
   }
-  use "kdheepak/lazygit.nvim"
+  use 'github/copilot.vim'
+  use 'kdheepak/lazygit.nvim'
   use "ahrefs/vim-styled-ppx"
   use "lukas-reineke/indent-blankline.nvim"
   use "jwalton512/vim-blade"
