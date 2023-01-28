@@ -1,0 +1,57 @@
+{
+  "languageserver": {
+    "ocaml": {
+       "command": "opam",
+       "args": ["config", "exec", "--", "ocamllsp"],
+      "filetypes": [
+        "reason",
+        "ocaml"
+       ]
+    },
+    "rescript": {
+      "enable": true,
+      "module": "~/.local/share/nvim/site/pack/packer/start/vim-rescript/server/out/server.js",
+      "args": ["--node-ipc"],
+      "filetypes": ["rescript", "reason"],
+      "rootPatterns": ["bsconfig.json"]
+    }
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "prettier.printWidth": 120,
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": false,
+  "prettier.trailingComma": "all",
+  "explorer.icon.enableNerdfont": true,
+  "explorer.width": 50,
+  "diagnostic.errorSign": "☹",
+  "diagnostic.hintSign": "ℹ",
+  "diagnostic.infoSign": "♨",
+  "diagnostic.checkCurrentLine": true,
+  "suggest.floatConfig": {
+    "border": true,
+    "rounded": true
+  },
+  "suggest.noselect": true,
+  "explorer.keyMappings.global": {
+    "e": "open",
+    "s": "open:split",
+    "E": "open:vsplit",
+    "t": "open:tab",
+
+    "yp": "copyFilepath",
+    "yn": "copyFilename",
+    "yy": "copyFile",
+    "dd": "cutFile",
+    "p": "pasteFile",
+    "df": "delete",
+    "dF": "deleteForever",
+
+    "a": "addFile",
+    "A": "addDirectory",
+    "r": "rename",
+
+    "R": "refresh",
+    "f": "search",
+    "F": "searchRecursive"
+  }
+}
