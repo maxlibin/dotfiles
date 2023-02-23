@@ -8,6 +8,9 @@ vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>', { noremap = true, silent = tru
 vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('i', 'kk', '<Esc>')
 
+vim.keymap.set('n', '<C-k>', ':bn<CR>')
+vim.keymap.set('n', '<C-j>', ':bp<CR>')
+
 require("toggleterm").setup{
   open_mapping = [[<c-z>]],
   float_opts = {

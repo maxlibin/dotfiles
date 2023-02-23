@@ -10,7 +10,13 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'airblade/vim-gitgutter'
   use 'rescript-lang/vim-rescript'
-  use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end }
+  use 'honza/vim-snippets'
+  use 'SirVer/ultisnips'
+  use {
+    "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+  }
+  use { 'andymass/vim-matchup' }
   use {'neoclide/coc.nvim', branch='release' }
   use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
   use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
@@ -34,4 +40,5 @@ return require('packer').startup(function(use)
       ts_update()
     end,
   }
+  use 'nkrkv/nvim-treesitter-rescript'
 end)

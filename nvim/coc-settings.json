@@ -10,9 +10,9 @@
     },
     "rescript": {
       "enable": true,
-      "module": "~/.local/share/nvim/site/pack/packer/start/vim-rescript/server/out/server.js",
+      "module": "~/.local/share/nvim/mason/packages/rescript-lsp/extension/server/out/server.js",
       "args": ["--node-ipc"],
-      "filetypes": ["rescript", "reason"],
+      "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
     }
   },
@@ -28,6 +28,10 @@
   "diagnostic.infoSign": "♨",
   "diagnostic.checkCurrentLine": true,
   "suggest.floatConfig": {
+    "border": true,
+    "rounded": true
+  },
+  "hover.floatConfig": {
     "border": true,
     "rounded": true
   },
